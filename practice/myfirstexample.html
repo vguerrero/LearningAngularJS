@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+<!--     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular. -->
+<!-- min.js"></script> -->
+
+<script src="libs/angular.min.js"></script>
+
+
+</head>
+
+<body ng-app="myapp">
+	<div ng-controller="HelloController">
+		<h2>Welcome {{helloTo.title}} to the world of Tutorialspoint!</h2>
+		<h3>{{helloTo.name}} please learn it!</h3>
+	</div>
+	<script>
+		angular.module("myapp", []).controller("HelloController",
+				function($scope) {
+					$scope.helloTo = {};
+					$scope.helloTo.title = "AngularJS";
+					$scope.helloTo.name = "Victor";
+				});
+	</script>
+</body>
+
+</html>

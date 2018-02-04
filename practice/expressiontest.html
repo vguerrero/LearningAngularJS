@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<title>Expressions</title>
+</head>
+<body>
+	<div ng-app=""
+		ng-init="quantity=2; cost=2000;
+ student={name:'Pilamar',lastname:'Cuerno',subject:'maths'}; marks=[3,4.5,2,5]">
+
+
+		<p>Hello ¡{{student.name + " " + student.lastname}}!</p>
+		<p>Math Book cost= ${{quantity * cost}}</p>
+		<p>student qualifications:</p>
+		<ol>
+			<li ng-repeat="mark in marks">{{mark}}</li>
+		</ol>
+	</div>
+</body>
+</html>
