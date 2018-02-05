@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<!-- https://www.w3schools.com/angular/angular_filters.asp -->
+<title>Filters</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="personCtrl">
+		<p>uppercase filter {{lastName | uppercase}}</p>
+		<p>the price filter is {{price | currency}}</p>
+
+		<p>short filter:</p>
+		<ul>
+			<li ng-repeat="c in countries | orderBy:'name'">{{c.name +" , "+
+				c.locale}}</li>
+		</ul>
+
+		<p>the filter filter letter 'a' apply on arrays:</p>
+		<ul>
+			<li ng-repeat="x in items | filter:'a'">{{x}}</li>
+		</ul>
+
+		<br>
+		<p>
+			<input type="text" ng-model="test">
+		</p>
+		<ul>
+			<li ng-repeat="x in applicants | filter : test">{{ x }}</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var app = angular.module("myApp", []);
+
+	app.controller('personCtrl', function($scope) {
+		$scope.firstName = "John";
+		$scope.lastName = "Doe";
+		$scope.fullName = function() {
+			return $scope.firstName + " " + $scope.lastName;
+		};
+		$scope.price = 2000;
+		$scope.items = [ 'amarillo', 'azul', 'rojo' ];
+		$scope.countries = [ {
+			locale : 'en-US',
+			name : 'United States'
+		}, {
+			locale : 'en-GB',
+			name : 'United Kingdom'
+		}, {
+			locale : 'es-CO',
+			name : 'Colombia'
+		}, {
+			locale : 'es-MX',
+			name : 'Mexico'
+		} ];
+		$scope.test="";
+		$scope.applicants=['Jhon','Margaret','Jesus','Paul','Emily'];
+		
+	});
+</script>
+</html>
