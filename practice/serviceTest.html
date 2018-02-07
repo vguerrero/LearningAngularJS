@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<!-- https://www.w3schools.com/angular/angular_filters.asp -->
+<title>Services</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="serviceCtrl">
+		<p>{{hex}}</p>
+	</div>
+</body>
+<script>
+	var app = angular.module("myApp", []);
+	
+	app.service('hexafy', function(){
+		this.myFunc=function(x){
+			return x.toString(16);
+		}
+	});
+
+	app.controller('serviceCtrl', function($scope,hexafy) {
+		$scope.hex = hexafy.myFunc(456000);
+		
+	});
+	
+	
+</script>
+</html>
