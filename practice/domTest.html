@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<!-- https://www.w3schools.com/angular/angular_http.asp -->
+<title>DOM</title>
+</head>
+<body>
+	<div ng-app="" ng-init="myVal=true">
+		<p>
+			<button ng-disabled="myVal">Click Me!</button>
+		</p>
+		<p>
+			<h4 ng-show="myVal">I'm going to dissapear</h4>
+		</p>
+		<p>
+			<h4 style="color: red;" ng-hide="myVal">I'm going to appear</h4>
+		</p>
+		<p>
+			<input type="checkbox" ng-model="myVal" /> change value please..
+		</p>
+		<p>{{myVal}}</p>
+	</div>
+
+</body>
+<script>
+	
+</script>
+</html>

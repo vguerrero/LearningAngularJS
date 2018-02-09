@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<!-- https://www.w3schools.com/angular/angular_http.asp -->
+<title>AngularJS Events</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="eventsCtrl">
+		<h1 ng-mousemove="count=count+1">Mouse over me!</h1>
+		<h2>{{count}}</h2>
+
+
+		<button ng-click="clickCount=clickCount+1">Click me</button>
+		<h2>{{clickCount}}</h2>
+	</div>
+</body>
+<script>
+	var app = angular.module("myApp", []);
+
+	app.controller('eventsCtrl', function($scope) {
+		$scope.count = 0;
+		$scope.clickCount = 0;
+	});
+</script>
+</html>

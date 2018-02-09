@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+
+
+
+
+<!-- https://www.w3schools.com/angular/angular_http.asp -->
+<title>Table sample</title>
+</head>
+<body>
+	<h3>Employee list</h3>
+	<div ng-app="myApp" ng-controller="serviceCtrl">
+		<table cellpadding="10" border="2">
+		<tr ng-repeat="emp in employees">
+			<td>{{emp.firtsName}}</td>
+			<td>{{emp.lastName}}</td>
+			<td>{{emp.salary | currency}}</td>
+		</tr>
+		</table>
+	</div>
+	
+</body>
+<script>
+	var app = angular.module("myApp", []);
+
+	app.controller('serviceCtrl', function($scope, $http) {
+		$http.get("http://localhost:9000/admin/home/list/employees/9").then(
+				function(response) {
+					//First function handles success
+					console.log(response.data);
+					$scope.employees = response.data;
+				}, function(response) {
+					//Second function handles error
+					$scope.errorMessage = "Something went wrong";
+				});
+	});
+
+	
+</script>
+</html>

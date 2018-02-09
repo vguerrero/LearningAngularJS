@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="libs/angular.min.js"></script>
+<!-- https://www.w3schools.com/angular/angular_http.asp -->
+<title>Http</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="serviceCtrl">
+		<p>{{myWelcome}}</p>
+		<p>{{stringData}}</p>
+		
+		<hr>
+		<ul>
+			<li ng-repeat="x in employees">{{ x.firtsName + ', ' +
+				x.lastName }}
+				<p>employee salary {{x.salary | currency}}</p>
+			</li>
+
+		</ul>
+		{{errorMessage}}
+	</div>
+	
+</body>
+<script>
+	var app = angular.module("myApp", []);
+
+	app.controller('serviceCtrl', function($scope, $http) {
+		$http.get("http://localhost:9000/admin/home/index").then(
+				function(response) {
+					$scope.myWelcome = response.data;
+				});
+
+		$http({
+			url : "http://localhost:9000/admin/home/string",
+			method : 'GET',
+			transformResponse : [ function(data) {
+				$scope.stringData = data;
+				return data;
+			} ]
+		});
+		
+		$http.get("http://localhost:9000/admin/home/list/employees/9").then(
+				function(response) {
+					//First function handles success
+					$scope.employees = response.data;
+				}, function(response) {
+					//Second function handles error
+					$scope.errorMessage = "Something went wrong";
+				});
+	});
+
+	
+</script>
+</html>
